@@ -1,0 +1,134 @@
+D:\주말재직자이종학\github\vue
+
+cd 경로 변경
+D:/주말재직자이종학/github/vue
+
+////////////////////////
+git 설정 [환경설정]
+////////////////////////
+
+주말반@1304-14 MINGW64 ~
+$ pwd
+/c/Users/주말반
+
+주말반@1304-14 MINGW64 ~
+$ cd D:/주말재직자이종학/github/vue
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학/github/vue
+$ git init
+Initialized empty Git repository in D:/주말재직자이종학/github/vue/.git/
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학/github/vue (master)
+$ ls
+02-20/
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학/github/vue (master)
+$ ls -la
+total 4
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:29 ./
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:08 ../
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:29 .git/
+drwxr-xr-x 1 주말반 197121 0 Feb 20 12:27 02-20/
+
+////////////////////////////////////////////////
+원격접속 (remote) 시 필요한 것 : 사용자 이메일, 사용자 이름
+////////////////////////////////////////////////
+
+사용자 이메일 (user email)
+$ git config user.email 'jonghak96@outlook.com'
+
+사용자 이름 (user name)
+$ git config user.name 'jonghak96'
+
+확인
+$ git config user.email
+$ git config user.name
+jonghak96@outlook.com
+jonghak96
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+github repository (저장소) 원격 추가 (add) 접속
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$ git remote add origin https://github.com/jonghak96/vue.git
+
+확인 (verify)
+$ git remote -v
+origin  https://github.com/jonghak96/vue.git (fetch)
+origin  https://github.com/jonghak96/vue.git (push)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+add - commit -push
+파일 올리기 (push) 업로드 (upload)
+
+
+3-1 add
+/////////////////////////
+업로드할 파일을 선택한다.
+스테이징 (staging) 올릴 파일을 스테이징에 올린다.)
+git add .
+
+3-2 commit
+커밋한다. (commit)
+검증 수정된거 삭제된거 (새로)추가된거 이런것들을 검증(검사)
+(messege)
+
+$ git commit -m '2021-02-20 upload'
+
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        02-20/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+///////////////
+3-3 Push
+////
+최종 업로드 Push 하기
+$ git push origin master
+
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 89.11 KiB | 5.57 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/jonghak96/vue.git
+ * [new branch]      master -> master
+
+
+
+
+////////////
+excersise
+///////////
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학
+$ cd D:/주말재직자이종학/github/vue
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학/github/vue (master)
+$ git add .
+warning: LF will be replaced by CRLF in 02_20_VUE/vue/lib/vue.js.
+The file will have its original line endings in your working directory
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학/github/vue (master)
+$ git commit -m '업데이트 vue.js'
+[master 288f567] 업데이트 vue.js
+ 2 files changed, 12056 insertions(+)
+ create mode 100644 02_20_VUE/index.html
+ create mode 100644 02_20_VUE/vue/lib/vue.js
+
+주말반@1304-14 MINGW64 /d/주말재직자이종학/github/vue (master)
+$ git push origin master
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), 89.51 KiB | 5.59 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/jonghak96/vue.git
+   dec026e..288f567  master -> master
