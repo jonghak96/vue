@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 문서</title>
+
+    <!-- CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <!-- File -->
+    <!-- script[src=./vue/lib/vue.js] -->
+    <script src="./vue/lib/vue.js"></script>
+
+</head>
+<body>
+
+    <h1></h1>
+    
+    <div>
+        <ul>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+        </ul>
+    </div>
+
+    div>{Lorem}
+    <div>Lorem</div>
+    <div>텍스트 내용</div>
+
+    div+div+div
+    <div></div>
+    <div></div>
+    <div></div>
+
+    div>ul>li*3^div>ul>li*3
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    div>ul>li*3^^div>ul>li*3
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+    div#section>ul>li.slide.slide$*5    ($ : 번호를 자동으로 넘버링)
+    div#section>ul>li*5.slide.slide$    ($ : 번호를 자동으로 넘버링)
+    <div id="section">
+        <ul>
+            <li class="slide slide1"></li>
+            <li class="slide slide2"></li>
+            <li class="slide slide3"></li>
+            <li class="slide slide4"></li>
+            <li class="slide slide5"></li>
+        </ul>
+    </div>
+
+    div#gallerly>ul>li*8.gallery-img>img[src=./img/image$$.jpg] ($$)
+    <div id="gallerly">
+        <ul>
+            <li class="gallery-img"><img src="./img/image01.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image02.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image03.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image04.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image05.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image06.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image07.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image08.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    div#gallerly>ul>li*8.gallery-img>img[src=./img/image$$@0.jpg] ($$@0)
+    <div id="gallerly">
+        <ul>
+            <li class="gallery-img"><img src="./img/image00.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image01.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image02.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image03.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image04.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image05.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image06.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/image07.jpg" alt=""></li>
+        </ul>
+    </div>
+
+</body>
+</html>
