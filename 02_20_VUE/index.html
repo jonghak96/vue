@@ -12,17 +12,17 @@
 <body>
     <div id="wrap">
 
+
     <!-- 마크업(Tag) - DOM(Document Object Model) View : HTML-->
     <!-- div#app>h1{자바스크립트 프레임워크 Vue.js 공부하기} -->
     <div id="app">
         <h1>자바스크립트 프레임워크 Vue.js 공부하기 {{ txt }}</h1>
-        <h2>뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시 안에 바인딩 속성 넣기</h2>
+        <h2 @click='gguggu'>뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시 안에 바인딩 속성 넣기</h2>
         <hr>
     </div>
 
         <!-- <Root> : HTML 안의 컨포넌트 -->
     
-
 
     <!-- 스크립트(Script) 뷰 모델 (View Model) + 모델 (Model): Controller -->
 
@@ -34,25 +34,19 @@
             data: {
                 msg: '자바스크립트 data',
                 txt: 'JAVASCRIPT VUE.JS'
+            },
+            methods: {
+                gguggu: function(){
+                    this.msg = '*************';
+                }
             }
         });
-
-
-
-
     </script>
-
-
-
-
-
-    <!-- 스타일(Style) : CSS -->
-    
 
 
     <div id="header">
         <h1>MVVM 모델링</h1>
-        <h2>{{ msg }}</h2>
+        <h2 @click='ggagga'>{{ msg }}</h2>
         <p>{{ babo }}</p>
         <hr>
     </div>
@@ -66,6 +60,13 @@
                     msg: 'MMVM 패턴',
                     babo: 50000
                     }
+            },
+            methods: {
+                ggagga: function(){
+                    var that = this;
+                    that.msg = '대한민국만세';
+                    that.babo = 555555555;
+                }
             }
             // data() {
             //     return {
@@ -77,6 +78,46 @@
     </script>
 
 
+
+    <div id="main">
+        <h1>메인영역</h1>
+        <!--
+            v-on: 디렉티브 @ 사용가능
+            v-bind: 디렉티브 속성지정 : 사용가능
+            v-if: v-for: 
+
+            h2 를 클릭하여 msg 데이터 속성을 변경하는 이벤트 실행
+            v-on:click='(메서드)함수호출 ggoggo' 메서드 호출하여
+            msg 속성 값을 'VUE.JS'로 변경 바인딩한다.
+        -->
+        <!-- <h2 v-on:click='ggoggo'>{{ msg }}</h2> -->
+        <h2 @click='ggoggo'>{{ msg }}</h2>
+        <p>{{ txt }}</p>
+    </div>
+
+    <script>
+        var mainObj = new Vue({
+            el: '#main',
+            data: {
+                msg: '변경 전',
+                txt: 'This is Main area.'
+            },
+            methods: {
+                ggoggo: function(){ // 메서드 (리터럴 함수)
+                    var that = this; // 좋은 습관.
+
+                    alert('메서드 호출 실행');
+                    // 메서드 함수 내에서는 속성 값 대입 연산자 (=) 로 쓴다.
+                    // (X) msg: "'VUE.js'" // msg 속성 변경.
+                    this.msg = "'VUE.js'" // msg 속성 변경.
+                    this.txt = 'Got it.'
+                }
+            }
+        });
+    </script>
+
+
+    <!-- 스타일(Style) : CSS -->
 
     <style>
         #wrap { width:1000px;margin:0 auto;background:#f0f0f0;padding:100px; }
