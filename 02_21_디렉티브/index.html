@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 v-for 반복문</title>
+    <!-- 오픈소스 -->
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        h1 {text-align:center;padding-top:30px;}
+        table {width:500px;margin:0 auto;border-collapse:collapse;}
+        table th {background:#f0f0f0;}
+        table th,td {border:1px solid #ccc;text-align:center;height:30px;}
+    </style>
+</head>
+<body>
+    
+
+    <!-- HTML : ROOT를 만들기 위함 -->
+    <div id="app">
+        <h1>지인 연락처</h1>
+        <table>
+            <tr><th>이름</th><th>휴대폰</th></tr>
+            <tr v-for='i in addr'><td> {{ i.이름 }} </td><td> {{ i.휴대폰 }} </td></tr>
+            <!-- <tr v-for='element(el) in 데이터(data) 안에 반복할 속성 addr'><td> {{ el.이름 }} </td><td> {{ el.휴대폰 }} </td></tr> -->
+        </table>
+    </div>
+
+
+    <!-- VUE.js -->
+    <script>
+
+        var obj = new Vue({
+            el: '#app', // ROOT 생성
+            data: { // 멤버변수(프로퍼티) 설정
+                addr: [
+                    {이름:'이순신', 휴대폰:'010-1234-5678'},
+                    {이름:'이말년', 휴대폰:'010-2222-5678'},
+                    {이름:'이재용', 휴대폰:'010-3333-5678'},
+                    {이름:'이혁재', 휴대폰:'010-4444-5678'},
+                    {이름:'이지은', 휴대폰:'010-5555-5678'}
+                ]
+            },
+            methods: {}
+        });
+
+    </script>
+
+
+</body>
+</html>

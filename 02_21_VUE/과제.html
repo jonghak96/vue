@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {width:800px;margin: 0 auto;}
+        table td,th {border:1px solid #ccc;height:30px;text-align:center;}
+    </style>
+
+</head>
+<body>
+
+    <h1>Edit Account</h1>
+    <table id="table"></table>
+
+    <!--
+    인스턴스 생성
+    프로퍼티 : 값
+    프로터피 : 배열
+    메서드 만들어서 프로퍼티 값 변환 또는 출력
+    인스턴스 전체 실행 메서드 : init()
+    -->
+
+    <script>
+
+        var account = {
+            id: '81819127',
+            channel: 'mobile',
+            user: [
+                {
+                    username: 'jonghak96',
+                    password: 'Password123',
+                },
+                {
+                    username: 'snoopy91',
+                    password: 'Password456',
+                },
+                {
+                    username: 'thejoen5611',
+                    password: 'Password456',
+                }
+            ],
+            addChannel: function() {
+                this.channel += '+PC';
+            },
+            chkAccount: function() {
+
+                var txt = '';
+                var $table = document.querySelector('#table');
+
+                txt = '<tr><th>유저이름</th><th>비밀번호</th></tr>';
+                this.user.forEach(function(el, idx, arr){
+                    txt += `<tr><td> ${el.username} </td><td> ${el.password} </td></tr>`;
+                });
+
+                $table.innerHTML = txt;
+
+
+                console.log(this.id);
+                console.log(this.channel);
+                console.log(this.user);
+            },
+            changeUserName: function() {
+                this.user[0].username = '변경된 유저 이름';
+                this.user[1].username = 'changedUserName';
+                console.log(this.user[0].username);
+                console.log(this.user[1].username);
+                document.write('<h2>' + this.user[0].username + '</h2>');
+                document.write(`<h2> ${this.user[1].username} </h2>`);
+            },
+            changePassword: function() {
+                this.user[0].password = '변경된 유저 비밀번호';
+                this.user[1].password = 'changedPassword';
+                for(let i=0;i<this.user.length;i++) {
+                    console.log(this.user[i].password);
+                }
+            },
+            init: function() {
+                this.chkAccount();
+                this.changeUserName();
+                this.changePassword();
+            }
+        };
+        account.init();
+
+    </script>
+
+
+</body>
+</html>
