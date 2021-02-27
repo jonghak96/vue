@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,25 @@
     <title>뷰 인스턴스 만들기 & 자바스크립트 클래스(객체와 함수)</title>
 
     <style>
-        table {width:800px;margin: 0 auto;}
-        table td,th {border:1px solid #ccc;height:30px;text-align:center;}
-        table#table td:nth-child(2) {text-align:left;}
+        table {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        table td,
+        th {
+            border: 1px solid #ccc;
+            height: 30px;
+            text-align: center;
+        }
+
+        table#table td:nth-child(2) {
+            text-align: left;
+        }
     </style>
 
 </head>
+
 <body>
 
     <!-- 인스턴스 -->
@@ -39,104 +53,104 @@
 
     <script>
 
-    /*
-    var app = {};           // 리터럴 방식
-    var app = new Object(); // 생성자 방식 : 클래스 객체
-    var app = [];           // 리터럴 방식
-    var app = new Array();  // 생성자 방식 : 배열 객체
-    */
+        /*
+        var app = {};           // 리터럴 방식
+        var app = new Object(); // 생성자 방식 : 클래스 객체
+        var app = [];           // 리터럴 방식
+        var app = new Array();  // 생성자 방식 : 배열 객체
+        */
 
-    // 인스턴스(객체) 생성
-    var vue = {
-        cnt: 0,           
-        el: '<h1>프로퍼티 (멤버변수) 템플릿</h1>',
-        method: ['피자','김밥','피자','라면','파스타'],
-        main: {
-            student: [
-                {번호:01, 이름:'이순신', KOR:97, ENG:50, MAT:95},
-                {번호:02, 이름:'이말년', KOR:99, ENG:80, MAT:88},
-                {번호:03, 이름:'주호민', KOR:98, ENG:90, MAT:95},
-                {번호:04, 이름:'최현석', KOR:99, ENG:50, MAT:98},
-                {번호:05, 이름:'이재용', KOR:96, ENG:99, MAT:99}
-            ],
-            address: [
-                {이름:'이순신', 주소:'서울시 서초구 서초동 충무빌딩'},
-                {이름:'이말년', 주소:'서울시 서초구 방배동 병건빌딩'},
-                {이름:'주호민', 주소:'서울시 강남구 강남동 송림빌딩'},
-                {이름:'최현석', 주소:'서울시 서초구 양재동 송림빌딩'},
-                {이름:'이재용', 주소:'서울시 송파구 잠실동 삼성빌딩'}
-            ]
-        },
-        init: function(){
-            this.cnt = 500; // this = vue 인스턴스(객체) 이름
-            this.el += '<h2>프로퍼티(멤버변수)에 템플릿 내용 추가</h2>'; // el = el + '내용'
-            console.log(this.cnt);
-            console.log(this.el);
-        },
-        compute: function(){
+        // 인스턴스(객체) 생성
+        var vue = {
+            cnt: 0,
+            el: '<h1>프로퍼티 (멤버변수) 템플릿</h1>',
+            method: ['피자', '김밥', '피자', '라면', '파스타'],
+            main: {
+                student: [
+                    { 번호: 01, 이름: '이순신', KOR: 97, ENG: 50, MAT: 95 },
+                    { 번호: 02, 이름: '이말년', KOR: 99, ENG: 80, MAT: 88 },
+                    { 번호: 03, 이름: '주호민', KOR: 98, ENG: 90, MAT: 95 },
+                    { 번호: 04, 이름: '최현석', KOR: 99, ENG: 50, MAT: 98 },
+                    { 번호: 05, 이름: '이재용', KOR: 96, ENG: 99, MAT: 99 }
+                ],
+                address: [
+                    { 이름: '이순신', 주소: '서울시 서초구 서초동 충무빌딩' },
+                    { 이름: '이말년', 주소: '서울시 서초구 방배동 병건빌딩' },
+                    { 이름: '주호민', 주소: '서울시 강남구 강남동 송림빌딩' },
+                    { 이름: '최현석', 주소: '서울시 서초구 양재동 송림빌딩' },
+                    { 이름: '이재용', 주소: '서울시 송파구 잠실동 삼성빌딩' }
+                ]
+            },
+            init: function () {
+                this.cnt = 500; // this = vue 인스턴스(객체) 이름
+                this.el += '<h2>프로퍼티(멤버변수)에 템플릿 내용 추가</h2>'; // el = el + '내용'
+                console.log(this.cnt);
+                console.log(this.el);
+            },
+            compute: function () {
 
-            var txt2 = '';
-            var $score = document.querySelector('#score');
-            
-            txt2 = '<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>';
-            this.main.student.forEach(function(el, idx, arr){
-                txt2 += `<tr><td> ${el.번호} </td><td> ${el.이름} </td><td> ${el.KOR} </td><td> ${el.ENG} </td><td> ${el.MAT} </td></tr>`;
-            });
+                var txt2 = '';
+                var $score = document.querySelector('#score');
 
-            $score.innerHTML = txt2;
+                txt2 = '<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>';
+                this.main.student.forEach(function (el, idx, arr) {
+                    txt2 += `<tr><td> ${el.번호} </td><td> ${el.이름} </td><td> ${el.KOR} </td><td> ${el.ENG} </td><td> ${el.MAT} </td></tr>`;
+                });
 
-            
-            // 주소부 템플릿에 출력
-            // 반복문 이용
+                $score.innerHTML = txt2;
 
-            var txt = ''; // 출력 내용 보관하는 변수
-            var $table = document.querySelector('#table'); // 선택자 - 태그요소를 나타내는 변수는 $ 표시 하는 습관.
 
-            txt = '<tr><th>이름</th><th>주소</th></tr>';
-            // txt += '<tr><td>' + this.main.address[0].이름 + '</td><td>' + this.main.address[0].주소 + '</td></tr>';
+                // 주소부 템플릿에 출력
+                // 반복문 이용
 
-            // 반복 처리
-            // javascript 객체 배열처리
-            // this.main.address.forEach(function(엘리먼트태그, 인덱스, 배열){});
-            this.main.address.forEach(function(el, index, arr){
-                console.log('배열처리 ', el, index, arr);
-                txt += `<tr><td> ${el.이름} </td><td> ${el.주소} </td></tr>`;
-            });
+                var txt = ''; // 출력 내용 보관하는 변수
+                var $table = document.querySelector('#table'); // 선택자 - 태그요소를 나타내는 변수는 $ 표시 하는 습관.
 
-            $table.innerHTML = txt; // 테이블에 데이터 출력
+                txt = '<tr><th>이름</th><th>주소</th></tr>';
+                // txt += '<tr><td>' + this.main.address[0].이름 + '</td><td>' + this.main.address[0].주소 + '</td></tr>';
 
-            console.log(this.method);
-            console.log(this.method[0]);
-            console.log(this.method[1]);
-            console.log(this.method[2]);
-            console.log(this.method[3]);
-            console.log(this.method[4]);
-            for(let i = 0; i<this.method.length; i++) {
-                console.log(this.method[i]);
+                // 반복 처리
+                // javascript 객체 배열처리
+                // this.main.address.forEach(function(엘리먼트태그, 인덱스, 배열){});
+                this.main.address.forEach(function (el, index, arr) {
+                    console.log('배열처리 ', el, index, arr);
+                    txt += `<tr><td> ${el.이름} </td><td> ${el.주소} </td></tr>`;
+                });
+
+                $table.innerHTML = txt; // 테이블에 데이터 출력
+
+                console.log(this.method);
+                console.log(this.method[0]);
+                console.log(this.method[1]);
+                console.log(this.method[2]);
+                console.log(this.method[3]);
+                console.log(this.method[4]);
+                for (let i = 0; i < this.method.length; i++) {
+                    console.log(this.method[i]);
+                }
+
+                console.log(this.main.address[1].이름);
+                console.log(this.main.address[1].주소);
+
+                console.log(this.main);
+                console.log(this.main.student);
+                console.log(this.main.student[2]);
+                console.log(this.main.student[2].이름);
+                console.log(this.main.student[2].KOR);
+                var tot = this.main.student[2].KOR + this.main.student[2].ENG + this.main.student[2].MAT;
+                console.log('세 과목의 총점 : ' + tot); // ECMA Script 5 [ES5]
+                console.log(`세 과목의 총점 : ${tot}`); // ECMA Script 6 [ES6] : backtick
+            },
+            run: function () {
+                this.init();
+                this.compute();
             }
+        };  // 인스턴스(객체) 끝
 
-            console.log(this.main.address[1].이름);
-            console.log(this.main.address[1].주소);
-
-            console.log(this.main);
-            console.log(this.main.student);
-            console.log(this.main.student[2]);
-            console.log(this.main.student[2].이름);
-            console.log(this.main.student[2].KOR);
-            var tot = this.main.student[2].KOR + this.main.student[2].ENG + this.main.student[2].MAT;
-            console.log('세 과목의 총점 : ' + tot); // ECMA Script 5 [ES5]
-            console.log(`세 과목의 총점 : ${tot}`); // ECMA Script 6 [ES6] : backtick
-        },
-        run: function(){
-            this.init();
-            this.compute();
-        }
-    };  // 인스턴스(객체) 끝
-
-    // vue 인스턴스(객체) 안에 init 이라는 메서드(멤버함수) 실행
-    vue.init();
-    vue.compute();
-    vue.run();
+        // vue 인스턴스(객체) 안에 init 이라는 메서드(멤버함수) 실행
+        vue.init();
+        vue.compute();
+        vue.run();
 
     </script>
 
@@ -152,23 +166,23 @@
             b: 'text',
             data: {
                 arr: [
-                    {이름:'이순신', KOR:99, ENG:40, MAT:99},
-                    {이름:'이순심', KOR:99, ENG:40, MAT:99},
-                    {이름:'이순식', KOR:99, ENG:40, MAT:99}
+                    { 이름: '이순신', KOR: 99, ENG: 40, MAT: 99 },
+                    { 이름: '이순심', KOR: 99, ENG: 40, MAT: 99 },
+                    { 이름: '이순식', KOR: 99, ENG: 40, MAT: 99 }
                 ]
             },
-            method01: function() {
+            method01: function () {
                 this.a = 555;
                 console.log(this.a);
             },
-            method02: function() {
+            method02: function () {
                 this.b += 'Append';
                 console.log(this.b);
             },
-            method03: function() {
+            method03: function () {
                 console.log(this.data.arr);
             },
-            init: function() {
+            init: function () {
                 this.method01();
                 this.method02();
                 this.method03();
@@ -178,4 +192,5 @@
     </script>
 
 </body>
+
 </html>

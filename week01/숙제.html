@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙제 테이블 만들기</title>
+</head>
+
+<body>
+
+    <h1>캐릭터 특성 표</h1>
+    <h3 id="userInfo"></h3>
+    <table id="game"></table>
+
+    <script>
+        var genshin = {
+            username: 'jonghak',
+            passwd: 'Qwerasdf!2',
+            channel: 'mobile',
+            character: [
+                { name: 'Mona', skill: 'waterfall', atk: 1500, def: 340 },
+                { name: 'Jongli', skill: 'metheo', atk: 1000, def: 1500 },
+                { name: 'Alberts', skill: 'blooming', atk: 900, def: 2300 },
+                { name: 'Benet', skill: 'firecarpet', atk: 400, def: 500 },
+                { name: 'Sultang', skill: 'herricane', atk: 500, def: 450 },
+                { name: 'Shinyum', skill: 'rocknroll', atk: 300, def: 620 },
+                { name: 'Chichi', skill: 'gangsi', atk: 900, def: 440 },
+                { name: 'Gagchung', skill: 'carvingstar', atk: 1700, def: 570 },
+                { name: 'Pichl', skill: 'whisle', atk: 400, def: 330 },
+                { name: 'Jungwoon', skill: 'iceage', atk: 500, def: 650 },
+                { name: 'Diruke', skill: 'batting', atk: 2800, def: 730 }
+            ],
+            showUserInfo: function () {
+                var $userInfo = document.querySelector('#userInfo');
+
+                $userInfo.innerHTML = '사용자 : ' + this.username + ' <br> ' + '비밀번호 : ' + this.passwd;
+
+            },
+            showCharacter: function () {
+                var characterDetail = '';
+                var $game = document.querySelector('#game');
+
+                characterDetail = '<tr><th>이름</th><th>스킬</th><th>공격력</th><th>방어력</th></tr>';
+                this.character.forEach(function (el, idx, arr) {
+                    console.log(el);
+                    characterDetail += `<tr><th> ${el.name} </th><th> ${el.skill} </th><th> ${el.atk} </th><th> ${el.def} </th></tr>`;
+                });
+
+                $game.innerHTML = characterDetail;
+            }
+        };
+        genshin.showUserInfo();
+        genshin.showCharacter();
+
+    </script>
+
+    <style>
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        table {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        table td,
+        th {
+            border: 1px solid #ccc;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+
+</body>
+
+</html>

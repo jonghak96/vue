@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week01</title>
+    <!-- CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- File -->
+    <script src="./vue/lib/vue.js"></script>
+</head>
+
+<body>
+
+    hi
+    <h1></h1>
+
+    div>ul>li{목록 내용 입니다.}*6
+    <div>
+        <ul>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+            <li>목록 내용 입니다.</li>
+        </ul>
+    </div>
+
+    div>{Lorem}
+    <div>Lorem</div>
+
+    div+div+div
+    <div></div>
+    <div></div>
+    <div></div>
+
+    div>ul>li*3^div>ul>li*3
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    div>ul>li*3^^div>ul>li*3
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    div#section>ul>li.slide.slide$*5
+    <div id="section">
+        <ul>
+            <li class="slide slide1"></li>
+            <li class="slide slide2"></li>
+            <li class="slide slide3"></li>
+            <li class="slide slide4"></li>
+            <li class="slide slide5"></li>
+        </ul>
+    </div>
+
+    div#gallerly>ul>li*8.gallerly-img>img[src=./img/image$$.jpg]
+    <div id="gallerly">
+        <ul>
+            <li class="gallerly-img"><img src="./img/image01.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image02.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image03.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image04.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image05.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image06.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image07.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image08.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    div#gallerly>ul>li*8.gallerly-img>img[src=./img/image$$@0.jpg]
+    <div id="gallerly">
+        <ul>
+            <li class="gallerly-img"><img src="./img/image00.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image01.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image02.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image03.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image04.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image05.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image06.jpg" alt=""></li>
+            <li class="gallerly-img"><img src="./img/image07.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    div#app>h1{Vue.js : javascript Framework}
+    <div id="app">
+        <h1>Vue.js : javascript Framework</h1>
+        <h2 @click='gguggu'>뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시 안에 바인딩 속성 넣기</h2>
+    </div>
+
+    <script>
+        var ojb = new Vue({
+            el: '#app',
+            data: {
+                msg: 'javascript data',
+                txt: 'JAVASCRIPT VUE.JS'
+            },
+            methods: {
+                gguggu: function () {
+                    this.msg = '******';
+                }
+            }
+        });
+    </script>
+
+    <div id="header">
+        <h1>MVVM 모델링</h1>
+        <h2 @click='ggagga'>{{ msg }}</h2>
+        <p>{{ babo }}</p>
+    </div>
+
+    <script>
+        var headerObj = new Vue({
+            el: '#header',
+            data: function () {
+                return {
+                    msg: 'MVVM 패턴',
+                    babo: 50000
+                }
+            },
+            methods: {
+                ggagga: function () {
+                    var that = this;
+                    that.msg = '대한민국만세';
+                    that.babo = 55555;
+                }
+            }
+        });
+    </script>
+
+    <div id="main">
+        <h1>메인 영역</h1>
+        <h2 v-on:click='ggoggo'>{{ msg }}</h2>
+        <p>{{ txt }}</p>
+    </div>
+
+    <script>
+        var mainObj = new Vue({
+            el: '#main',
+            data: {
+                msg: '변경 전',
+                txt: 'This is main area.'
+            },
+            methods: {
+                ggoggo: function () {
+                    var that = this;
+
+                    alert('메소드 호출 실행');
+                    this.msg = "'VUE.JS'"
+                    this.txt = '"OK."'
+                }
+            }
+        });
+    </script>
+
+    <div id="app2">
+        <h1>지인 연락처</h1>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>휴대폰</th>
+            </tr>
+            <tr v-for='i in addr'>
+                <td>{{ i.이름 }}</td>
+                <td>{{ i.휴대폰 }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var appObj = new Vue({
+            el: '#app2',
+            data: {
+                addr: [
+                    { 이름: '이순신', 휴대폰: '010-3456-5432' },
+                    { 이름: '이순신', 휴대폰: '010-3456-5432' },
+                    { 이름: '이순신', 휴대폰: '010-3456-5432' },
+                    { 이름: '이순신', 휴대폰: '010-3456-5432' },
+                    { 이름: '이순신', 휴대폰: '010-3456-5432' }
+                ]
+            },
+            methods: {}
+        });
+    </script>
+
+    <h1>리터럴 방식 클래스 인스턴스 만들기</h1>
+    <h2>주소부</h2>
+    <table id="table"></table>
+    <table id="score"></table>
+
+    <script>
+        var vue = {
+            cnt: 0,
+            el: '<h1>프로퍼티 (멤버변수) 템플릿</h1>',
+            method: ['피자', '김밥', '피자', '라면', '파스타'],
+            main: {
+                student: [
+                    { 번호: 01, 이름: '이순신', KOR: 97, ENG: 50, MAT: 95 },
+                    { 번호: 02, 이름: '이말년', KOR: 99, ENG: 80, MAT: 88 },
+                    { 번호: 03, 이름: '주호민', KOR: 98, ENG: 90, MAT: 95 },
+                    { 번호: 04, 이름: '최현석', KOR: 99, ENG: 50, MAT: 98 },
+                    { 번호: 05, 이름: '이재용', KOR: 96, ENG: 99, MAT: 99 }
+                ],
+                address: [
+                    { 이름: '이순신', 주소: '서울시 서초구 서초동 충무빌딩' },
+                    { 이름: '이말년', 주소: '서울시 서초구 방배동 병건빌딩' },
+                    { 이름: '주호민', 주소: '서울시 강남구 강남동 송림빌딩' },
+                    { 이름: '최현석', 주소: '서울시 서초구 양재동 송림빌딩' },
+                    { 이름: '이재용', 주소: '서울시 송파구 잠실동 삼성빌딩' }
+                ]
+            },
+            init: function () {
+                this.cnt = 500;
+                this.el += '<h2>프로퍼티(멤버변수)에 템플릿 내용 추가</h2>';
+                console.log(this.cnt);
+                console.log(this.el);
+            },
+            compute: function () {
+                var txt2 = '';
+                var $score = document.querySelector('#score');
+
+                txt2 = '<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>';
+                this.main.student.forEach(function (el, idx, arr) {
+                    txt2 += `<tr><td> ${el.번호} </td><td> ${el.이름} </td><td> ${el.KOR} </td><td> ${el.ENG} </td><td> ${el.MAT} </td></tr>`;
+                });
+
+                $score.innerHTML = txt2;
+
+                var txt = '';
+                var $table = document.querySelector('#table');
+
+                txt = '<tr><th>이름</th><th>주소</th></tr>';
+
+                this.main.address.forEach(function (el, index, arr) {
+                    console.log('배열처리 ', el, index, arr);
+                    txt += `<tr><td> ${el.이름} </td><td> ${el.주소} </td></tr>`;
+                });
+
+                $table.innerHTML = txt;
+            },
+            run: function () {
+                this.init();
+                this.compute();
+            }
+        };
+        // vue.init();
+        // vue.compute();
+        vue.run();
+
+    </script>
+
+
+
+    <style>
+        #wrap {
+            width: 1000px;
+            margin: 0 auto;
+            background: #f0f0f0;
+            padding: 100px;
+        }
+
+        #app {
+            text-align: center;
+        }
+
+        #header {
+            text-align: center;
+        }
+
+        h2,
+        p {
+            color: #39b;
+            background: #ddd;
+            display: inline-flex;
+            padding: 20px 10px;
+            font-size: 20px;
+            font-weight: normal;
+        }
+    </style>
+
+    <style>
+        h1 {
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        table {
+            width: 500px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background: #f0f0f0;
+        }
+
+        table th,
+        td {
+            border: 1px solid #ccc;
+            text-align: center;
+            height: 30px;
+        }
+    </style>
+
+</body>
+
+</html>
