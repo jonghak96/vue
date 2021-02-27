@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+    <style>
+        #app {text-align: center;}
+        img:first-child {width:300px;}
+        img:last-child {width:300px;}
+        #fruit {padding:5px 10px;}
+        #idirum {width:200px;height:30px;border:1px solid #ccc;background:#f6f6f6;padding:5px 15px;}
+        #idirum::placeholder {color:#aaa;}
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <h1>a의 값(Value) : {{ a }} / b의 값(Value) : {{ b }}</h1>
+        <h2 v-if='a'>조건문(v-if)이 참(True)인 경우</h2>
+        <h2 v-if='b'>조건문(v-if)이 거짓(False)인 경우</h2>
+        <h3><a v-bind:href=url01 v-bind:title='title01'>jquery.js 사이트 바로가기</a></h3>
+        <h3><a v-bind:href=url02 v-bind:title='title02'>vue.js 사이트 바로가기</a></h3>
+        <h3><img v-bind:src=imgurl01 sv-bind:alt='imgalt01' v-bind:title='imgalt01'></h3>
+        <h3><img :src=imgurl02 v-bind:alt='imgalt02' v-bind:title='imgalt02'></h3>
+        <!-- v-bind: == : -->
+        <!-- bind:속성이름 -->
+        <!-- img - title = tooltip -->
+        <hr>
+        <h2>오늘의 날짜는 : {{ nowDate }}</h2>
+        <h2>오늘의 날짜는 : {{ nowDate.getFullYear() }} - {{ nowDate.getMonth() + 1 }} - {{ nowDate.getDate() }} ({{ nowDate.getDay() }})</h2>
+        <hr>
+        <h2>셀렉트 박스 옵션 선택 v-model</h2>
+        <select id="fruit" name="fruit" v-model='select'>
+            <!-- v-model - check box, input, radio box -->
+            <option value="">Pick it!</option>
+            <option value="딸기">딸기</option>
+            <option value="사과">사과</option>
+            <option value="바나나">바나나</option>
+            <option value="자몽">자몽</option>
+        </select>
+        <h3>선택 : {{ select }}</h3>
+        <hr>
+        <h2>체크박스 v-model</h2>
+        <div class="check-box">
+            <input type="checkbox" name="chk01" id="idchk01" value="운동" v-model='chk'><label for="idchk01">운동</label>
+            <input type="checkbox" name="chk02" id="idchk02" value="등산" v-model='chk'><label for="idchk02">등산</label>
+            <input type="checkbox" name="chk03" id="idchk03" value="낚시" v-model='chk'><label for="idchk03">낚시</label>
+            <input type="checkbox" name="chk04" id="idchk04" value="게임" v-model='chk'><label for="idchk04">게임</label>
+            <!-- 서로 다른 이름을 쓸 것 -->
+            <!-- 레이블과 아이디를 연결해놓음 -->
+        </div>
+        <h2>취미 생활 목록 : {{ chk }}</h2>
+        <hr>
+        <h2>라디오버튼 v-model</h2>
+        <div class="radio-box">
+            <input type="radio" name="chk" id="chk01" value="여성" v-model='gender'><label for="chk01">여성</label>
+            <input type="radio" name="chk" id="chk02" value="남성" v-model='gender'><label for="chk02">남성</label>
+            <input type="radio" name="chk" id="chk03" value="기타" v-model='gender'><label for="chk03">기타</label>
+            <!-- 같은 이름을 쓸 것 -->
+            <!-- 레이블과 아이디를 연결해놓음 -->
+        </div>
+        <h2>선택 항목 : {{ gender }}</h2>
+        <hr>
+        <h2>다중 IF문 v-if ~ v-else-if ~ v-else</h2>
+        <div id="if-box">
+            <ol>
+                <li v-if='choice01'>자장면</li>
+                <li v-else-if='choice02'>밀면</li>
+                <li v-else>냉면</li>
+            </ol>
+        </div>
+        <hr>
+        <h2>입력상자 텍스트를 이용한 응용 v-model</h2>
+        <div class="text-box">
+            <label for="idirum">회원 이름</label>
+            <input type="text" name="irum" id="idirum" v-model='value' @keyup='eventFn'>
+            <!-- v-on == @ -->
+        </div>
+        <h3>{{ value }}</h3>
+        <h3 v-show='x'>회원 이름을 입력하세요. {{ value }}</h3>
+    </div>
+    
+    <script>
+        const conditionObj = new Vue({
+            el: '#app',
+            data: {
+                a: true,
+                b: false,
+                url01: 'https://jquery.com/',
+                url02: 'https://vuejs.org/',
+                title01: 'jquery.js 사이트 바로가기',
+                title02: 'vue.js 사이트 바로가기',
+                imgurl01: './img/dessert.jpg',
+                imgurl02: './img/logo.png',
+                imgalt01: 'green tea latte',
+                imgalt02: 'vue logo',
+                nowDate: new Date(), // 생성자 방식은 첫 글자가 무조건 대문자
+                select: '',
+                chk: [], // 선택사항 (체크박스 항목) 배열로 지정
+                gender: '',
+                choice01: false,
+                choice02: false,
+                value: '',
+                x: true
+            },
+            methods: {
+                eventFn: function() {
+                    this.x = false; // 키보드가 입력되고 올라오면 (keyup / keydown / keypress)
+                }
+            }
+        });
+    </script>
+</body>
+</html>

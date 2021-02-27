@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+</head>
+<body>
+
+    <!--
+    스토리보드 :
+    헤딩은 data에 정의된 멤버 변수를 사용.
+    웹문서에 고객 이름을 순서있는 목록에 반복 출력 합니다.
+    그리고 데이터는 뷰의 data 속성에 객체 배열(memberList)로 된 데이터를 활용한다.
+    -->
+
+    <!-- VIEW -->
+    <div id="member">
+        <h1>{{ title }}</h1>
+        <ol>
+            <li v-for='(element, index) in memberList' v-if='true'>{{ index + 1 }}. 고객 이름 : {{ element.이름 }}, 전화 : {{ element.전화 }}, 참여: {{ element.참여}}</li>
+        </ol>
+    </div>
+
+    <!-- MODEL -->
+    <script>
+        // VUE MODEL
+        const member = new Vue({
+            el: '#member', // 유효범위 = scope
+            data: {
+                title: '정기 고객 리스트',
+                memberList: [
+                    {이름: '강종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '고종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '김종학',    전화: '010-1234-5678',  참여: false},
+                    {이름: '박종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '배종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '서종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '유종학',    전화: '010-1234-5678',  참여: false},
+                    {이름: '윤종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '임종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '이종학',    전화: '010-1234-5678',  참여: true},
+                    {이름: '정종학',    전화: '010-1234-5678',  참여: false},
+                ]
+            },
+            methods: {
+
+            }
+        });
+    </script>
+
+
+</body>
+</html>
