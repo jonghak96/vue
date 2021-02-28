@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component_Global Component_Template_상위콤포넌트에서 하위콤포넌트 통신 PROPS (3)</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;border:0;}
+        html,body {width:100%;height:100%;}
+        html {overflow-y:scroll;}
+        body {font:normal 16px/1 '돋움', 'arial';color:#555;background:#f0f0f0;}
+        a {color:#555;text-decoration:none;}
+        ul,li {list-style:none;}
+        .clearfix:after {display:block;clear:both;content:'';}
+
+        /* DOM 요소 (트리구조로 표현) */
+        #wrapper {width:100%;margin:0 auto;text-align:center;background:#f0f0f0;}
+        #wrapper #section5 .notice {width:1170px;margin:0 auto;}
+        #wrapper #section5 .notice h1 {color:#279;padding:50px 0;font-size:30px;font-weight:700;text-align:center;}
+        #wrapper #section5 .notice h2 {font-size:18px;font-weight:700;text-align:center;line-height:50px;border-top:2px solid #bbb;border-bottom:2px solid #bbb;background:#ddd;}
+        #wrapper #section5 .notice    span {float:left;display:block;}
+        #wrapper #section5 .notice    span.no {width:59px;}
+        #wrapper #section5 .notice    span.title {width:819px;}
+        #wrapper #section5 .notice    span.date {width:119px;}
+        #wrapper #section5 .notice    span.views {width:109px;}
+
+        #wrapper #section5 .notice ul {width:100%;text-align:center;}
+        #wrapper #section5 .notice ul li {border-bottom:1px solid #ccc;line-height:50px;}
+        #wrapper #section5 .notice ul li:hover {background:#ddd;}
+        #wrapper #section5 .notice ul li span.title {text-align:left;text-indent:20px;}
+        #wrapper #section5 .notice ul li span.title a:hover {text-decoration:underline;color:#000;}
+    </style>
+
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- HTML -->
+    <div id="section5">
+        <div class="notice">
+            <h1>공지사항</h1>
+            <h2 class="clearfix">
+                <span class="no">No</span>
+                <span class="title">제목</span>
+                <span class="date">날짜</span>
+                <span class="views">조회수</span>
+            </h2>
+            <ul>
+                <!-- 반복문일 경우는 item을 propsbind에 바인딩 시킨다 -->
+                <notice-component v-for='item in notice' v-bind:propsbind='item'></notice-component>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+        // GLOBAL COMPONENT
+        Vue.component('notice-component', {
+            props: ['propsbind'],
+            template: '\
+            <li class="clearfix">\
+            <span class="no">{{ propsbind.no }}</span>\
+                <span class="title"><a href="javascript:void(0)">{{ propsbind.제목 }}</a></span>\
+                <span class="date">{{ propsbind.날짜 }}</span>\
+                <span class="views">{{ propsbind.조회수 }}</span>\
+            </li>\
+            '
+        });
+
+        // VIEW INSTANCE
+        var section5 = new Vue({
+            el: '#section5',
+            data: {
+                notice: [
+                    {no: 301,   제목: '시스템 개선 및 점검 안내',                            날짜: '2021-02-25',   조회수: 7586},
+                    {no: 300,   제목: 'SSG PAY 결제 서비스 일시 이용 중지 안내',              날짜: '2021-02-15',   조회수: 45226},
+                    {no: 299,   제목: '스타벅스 홈페이지/애플리케이션 일부 서비스 종료 안내',   날짜: '2021-02-15',   조회수: 49119},
+                    {no: 298,   제목: '시스템 개선 및 점검 안내',                             날짜: '2021-02-10',   조회수: 32728},
+                    {no: 297,   제목: '스타벅스 Web/App 결제 수단 변경 안내',                 날짜: '2021-02-10',   조회수: 144265},
+                    {no: 296,   제목: '설 연휴 스타벅스 딜리버스 운영 시간 안내',              날짜: '2021-02-09',   조회수: 66721},
+                    {no: 295,   제목: '설 연휴 스타벅스 매장 영업시간 변경 안내',              날짜: '2021-02-04',   조회수: 117654},
+                    {no: 294,   제목: '시스템 개선 및 점검 안내',                             날짜: '2021-02-03',   조회수: 7099},
+                    {no: 293,   제목: '개인정보 처리방침 개정안내',                           날짜: '2021-01-28',   조회수: 7839},
+                    {no: 292,   제목: '위치정보 이용약관 개정안내',                           날짜: '2021-01-28',   조회수: 5061}
+                ]
+            }
+        });
+
+        $('#main button').on({
+            click: function(event) {
+                event.preventDefault(); // 화면 위로 올라가는 것을 방지 : 자신의 이벤트만 수행하고 버블링을 막는 것.
+                event.stopPropagation(); // 전파 방지 : 자식영역에서 버튼 클릭 시 이벤트가 부모영역에서 까지 수행되는 현상을 막아준다.
+            }
+        });
+
+    </script>
+
+</div>    
+</body>
+</html>

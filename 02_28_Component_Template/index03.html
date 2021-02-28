@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component_Global Component_Template_상위콤포넌트에서 하위콤포넌트 통신 PROPS (2)</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+
+    <style>
+        /* DOM 요소 (트리구조로 표현) */
+        #wrapper {width:1200px;margin:0 auto;text-align:center;background:#f0f0f0;}
+        #wrapper #main .button-box {color:#279;padding:50px 0;}
+        #wrapper #main .button-box p {color:#000;padding:50px 0;font-size:40px;color:#379;}
+        #wrapper #main .button-box button {color:#eee;background:#000;font-size:20px;width:200px;height:40px;cursor:pointer;}
+        #wrapper #main .button-box button:hover {background:#333;}
+        #wrapper #main .button-box button:active {background:#922;}
+    </style>
+
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- HTML -->
+    <div id="main">
+        <div class="button-box">
+            <babo-component v-bind:count='num'></babo-component>
+            <!-- <button @click='countFn'>Click</button> -->
+            <!-- 다중 이벤트 사용 -->
+            <button v-on='{focusin:countFn3, click:countFn, mouseenter:countFn2}'>Click</button>
+            <!-- <button @click.prevent='countFn'>Click</button>     : preventDefault() -->
+            <!-- <button @click.stop='countFn'>Click</button>        : stopPropagation() -->
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+        // GLOBAL COMPONENT
+        Vue.component('babo-component', {
+            props: ['count'],
+            template: '<p>{{ count }}</p>' // 하위 콤포넌트 속성 props의 값 'count'로 전달 받음.
+        });
+
+        // VIEW INSTANCE
+        var main = new Vue({ // ROOT
+            el: '#main',
+            data: {
+                num: 0 // ROOT의 num 값이 하위 콤포넌트에 전달(통신)됨.
+            },
+            methods: {
+                countFn: function() {
+                    this.num++;
+                }
+            }
+        });
+
+    </script>
+
+</div>    
+</body>
+</html>

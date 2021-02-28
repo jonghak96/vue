@@ -52,7 +52,7 @@ Vue devtools
 33.
 
 34.
-Javascript + HTML,CSS + Vue Model
+Javascript + HTML,CSS + (Vue) ViewModel
 
 40.
 new Vue({

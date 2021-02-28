@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component_Global Component_Template_상위콤포넌트에서 하위콤포넌트 통신</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+
+    <style>
+        /* DOM 요소 (트리구조로 표현) */
+        #wrapper {width:1200px;margin:0 auto;text-align:center;background:#f0f0f0;}
+        /* #wrapper #header {} */
+        #wrapper #header h1 {color:#000;}
+        #wrapper #header h2 {color:#279;}
+        #wrapper #header h2 mark {background:#bd5;}
+    </style>
+
+</head>
+<body>
+<div id="wrapper">
+
+
+    <!-- VIEW 영역 = HTML 영역 = 마크업 영역 -->
+    <div id="header">
+        <h1>{{ msg }}</h1>
+        <!-- 가상요소 (JSX : Javascript XML) 사용자 정의 요소(태그) -->
+        <!-- 콤포넌트 이름 (마운트 전에 존재했다가, 마운트 이후에 사라짐.) -->
+        <!-- 상위 콤포넌트에서 하위 콤포넌트에게 통신은 Properties(속성):props 이용하여 전달 -->
+        <nav-component v-bind:txtbind='txt'></nav-component>
+    </div>
+
+
+    <!-- MODELING 영역 = SCRIPT 영역 -->
+    <script>
+
+
+    // VIEW MODEL
+
+        // 전역 콤포넌트 생성
+        // 하위 콤포넌트에서 상위 콤포넌트에게 통신은 Event(이벤트):$emit 이용하여 전달
+        // Vue.component('콤포넌트 이름', {});
+        Vue.component('nav-component', {
+            props:['txtbind'], // 바인딩 (v-bind:속성이름) 할 속성 지정
+            // template: '<h2><mark> 전역 콤포넌트 내용 = 템플릿 속성 </mark></h2>'
+            template: '<h2><mark><em> {{ txtbind }} </em></mark></h2>'
+        });
+
+
+        // 뷰 인스턴스 생성
+        var header = new Vue({ // ROOT
+            el: '#header',
+            data: {
+                msg: '전역 콤포넌트가 생성 되었습니다.',
+                txt: '상위 콤포넌트에서 하위 콤포넌트로 통신 성공 했습니다.'
+            },
+            // data(){
+            //     return {
+            //         msg: 'ECMA6'
+            //     }
+            // }
+        });
+
+
+    </script>
+
+    
+</div>    
+</body>
+</html>
