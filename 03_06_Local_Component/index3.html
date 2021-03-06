@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Componenet | 변수사용 (혼자하기)</title>
+    <script src="./vue/lib/vue.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+    <!-- HTML -->
+    <div id="game">
+        <h1>원신</h1>
+        <title-component></title-component>
+        <detail-component></detail-component>
+        <ul>
+            <characterItem-component></characterItem-component>
+        </ul>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+        var titleComponent = {
+            template: '<h2>합성 재료 정리</h2>'
+        };
+        var detailComponent = {
+            template: '<p>캐릭터 돌파 소재</p>'
+        };
+        var characterItemComponent = {
+            template: '<li>ITEM01</li>'
+        }
+
+
+        var game = new Vue({
+            el: '#game',
+            data: {
+
+            },
+            components: {
+                'title-component': titleComponent,
+                'detail-component': detailComponent,
+                'characterItem-component': characterItemComponent
+            }
+        });
+
+    </script>
+
+
+</div>
+</body>
+</html>

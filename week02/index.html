@@ -49,12 +49,12 @@
     <!-- HTML -->
     <div id="header">
         <h1>{{ msg }}</h1>
-        <nav-component v-bind:txtbind='txt'></nav-component>
+        <nav-component :txtbind='txt'></nav-component>
     </div>
 
     <div id="main">
         <div class="button-box">
-            <babo-component v-bind:count='num'></babo-component>
+            <babo-component :count='num'></babo-component>
             <!-- <button @click='countFn'>Click</button> -->
             <!-- 다중 이벤트 사용 -->
             <button v-on='{focusin:countFn3, click:countFn, mouseenter:countFn2}'>Click</button>
@@ -74,7 +74,7 @@
                 <span class="views">조회수</span>
             </h2>
             <ul>
-                <notice-componenet v-for='(row, index) in notice' v-bind:propsbind='row'></notice-componenet>
+                <notice-componenet v-for='(row, index) in notice' :propsbind='row'></notice-componenet>
             </ul>
         </div>
     </div>

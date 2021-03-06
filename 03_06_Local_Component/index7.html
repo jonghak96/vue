@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Componenet | 변수사용 | 객체 배열 데이터 속성 | 상위에서 하위에게 통신 (혼자하기)</title>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        * {margin:0;padding:0;vertical-align:middle;border:0;}
+        html,body {width:100%;height:100%;}
+        html {overflow-y:scroll;}
+        body {font:normal 16px/1 '돋움', 'arial';color:#555;background:#f0f0f0;}
+        a {color:#555;text-decoration:none;}
+        ul,li {list-style:none;}
+        .clearfix:after {display:block;clear:both;content:'';}
+
+        #item ol li {width:100%;}
+        #item ol li span {float:left;display:block;}
+        #item ol li span.id {width:50px;}
+        #item ol li span.name {width:100px;}
+        #item ol li span.location {width:50px;}
+        
+    </style>
+
+</head>
+<body>
+<div id="wrap">
+
+    <!-- HTML -->
+    <div id="item">
+        <h1>아이템 정리</h1>
+        <ol>
+            <food-comp v-for='food in foods' :propsdata='food'></food-comp>
+        </ol>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+        var foodComp = {
+            props: ['propsdata'],
+            template: '\
+            <li class="clearfix">\
+                <span class="id">{{ propsdata.id }}</span>\
+                <span class="name">{{ propsdata.name }}</span>\
+                <span class="location">{{ propsdata.location }}</span>\
+            </li>\
+            '
+        };
+
+        var item = new Vue({
+            el: '#item',
+            data: {
+                foods: [
+                    {id: '01', name: '민들레씨앗', location: '몬드'},
+                    {id: '02', name: '풍차국화', location: '몬드'},
+                    {id: '03', name: '금어초', location: '몬드'},
+                    {id: '11', name: '절운고추', location: '리월'},
+                    {id: '12', name: '예상꽃', location: '리월'},
+                    {id: '13', name: '유리백합', location: '리월'}
+                ]
+            },
+            components: {
+                'food-comp' : foodComp
+            }
+        });
+
+    </script>
+
+</div>
+</body>
+</html>

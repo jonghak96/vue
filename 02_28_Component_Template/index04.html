@@ -64,12 +64,14 @@
             props: ['propsbind'],
             template: '\
             <li class="clearfix">\
-            <span class="no">{{ propsbind.no }}</span>\
+                <span class="no">{{ propsbind.no }}</span>\
                 <span class="title"><a href="javascript:void(0)">{{ propsbind.제목 }}</a></span>\
                 <span class="date">{{ propsbind.날짜 }}</span>\
                 <span class="views">{{ propsbind.조회수 }}</span>\
             </li>\
             '
+            // ``(Backtick) : ECMA6
+            // javascript:void(0) : prevent event 대신
         });
 
         // VIEW INSTANCE

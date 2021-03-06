@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Componenet | 변수사용 | 버튼클릭 이벤트로 | 상위에서 하위에게 통신 | 감시자</title>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        #app {text-align:center;}
+    </style>
+
+</head>
+<body>
+<div id="wrap">
+
+    <!-- HTML -->
+    <div id="app">
+        <h1>버튼클릭 이벤트로 | 상위 컴포넌트에서 하위 컴포넌트로의 통신 : PROPS 사용합니다.</h1>
+        <button @click='countFn'>BUTTON</button>
+        <app-comp :propsdata='num'></app-comp>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+        var appComp = {
+            props: ['propsdata'],
+            // 하위 컴포넌트
+            template: '<h2>지역 컴포넌트 템플릿 내용 {{ propsdata }}</h2>'
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 99
+            },
+            components: {
+                'app-comp' : appComp
+            },
+            methods: {
+                countFn: function() {
+                    this.num--;
+                }
+            },
+            // 감시자 : watch man
+            watch: {
+                num: function() {
+                    console.log('데이터 변환 ', this.num);
+                }
+            }
+        });
+
+    </script>
+
+</div>
+</body>
+</html>

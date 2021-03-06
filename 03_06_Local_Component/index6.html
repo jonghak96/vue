@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Componenet | 변수사용 | 객체 배열 데이터 속성 | 상위에서 하위에게 통신</title>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        #app {text-align:center;}
+    </style>
+
+</head>
+<body>
+<div id="wrap">
+
+    <!-- HTML -->
+    <div id="food">
+        <h1>지역 컴포넌트 | 객체 배열 데이터 | PROPS 이용한 통신</h1>
+        <ol>
+            <data-comp v-for='item in foodData' :propsdata='item'></data-comp>
+        </ol>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+
+        var dataComp = {
+            props: ['propsdata'],
+            template: '<li>재료코드 : {{ propsdata.id }} &nbsp&nbsp&nbsp 재료이름 : {{ propsdata.name }}</li>'
+        };
+
+        var food = new Vue({
+            el: '#food',
+            data: {
+                foodData: [
+                    {id: 'm01',     name: '바람버섯'},
+                    {id: 'l01',     name: '절운고추'},
+                    {id: 'l02',     name: '청심'},
+                    {id: 'l03',     name: '유리주머니'},
+                    {id: 'm02',     name: '풍차국화'}
+                ]
+            },
+            components: {
+                'data-comp': dataComp
+            },
+            methods: {
+
+            }
+        });
+
+    </script>
+
+</div>
+</body>
+</html>
