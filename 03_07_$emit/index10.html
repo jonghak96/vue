@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Componenet | BRANDO Site 제작 | $emit (에밋)</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+</head>
+<body>
+<div id="wrap">
+
+    <!-- 헤더 영역 시작 -->
+    <div id="header">
+        <div class="wrap">
+            <div class="gap">
+                <div class="container">
+                    <!-- Logo Template -->
+                    <logo-component :propslogo='imglogo'></logo-component>
+                    <!-- Navigation Template -->
+                    <nav id="nav">
+                        <ul>
+                            <nav-component v-for='item in gnb' :propsnav='item'></nav-component>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var logoComponent = {
+            props: ['propslogo'],
+            // 외부 데이터를 가져올 때는, v-bind: 붙여줘야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            template: '\
+                <div class="logo">\
+                    <a href="javascript" class="logo-btn">\
+                        <img v-bind:src="propslogo" alt="logo">\
+                    </a>\
+                </div>\
+            '
+        };
+        var navComponent = {
+            // props 소문자로만 쓸 것!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            props: ['propsnav'],
+            template: '<li><a href="javascript" class="main-btn"> {{ propsnav.menu }} </a></li>'
+        };
+
+        var header = new Vue({
+            el: '#header',
+            data: {
+                imglogo: './img/logo_image.png',
+                gnb: [
+                    {menu: 'ABOUT'},
+                    {menu: 'PORTFOLIO'},
+                    {menu: 'SERVICES'},
+                    {menu: 'TESTIMONIAL'},
+                    {menu: 'BLOG'},
+                    {menu: 'CONTACT'}
+                ]
+            },
+            components: {
+                'logo-component': logoComponent,
+                'nav-component': navComponent
+            }
+        });
+    </script>
+    <!-- 헤더 영역 끝 -->
+
+    
+    <!-- 메인 영역 시작 -->
+    <div id="main">
+        <!-- 3-2. 생성된 이벤트 이름을 상위 컴포넌트의 데이터 속성을 할당하고 활성화한다.
+        예) v-on:[하위컴포넌트에서 생성된 이벤트(에밋)이름]='[상위 컴포넌트의 데이터 변경을 위해 메서드 안에 메서드 함수(updateFiledata)를 호출함]'
+        예) v-on:emitevent='updateFiledata' -->
+        <!-- 4. 상위 컴포넌트 데이터 속성 중 filedata의 변경(증가)된 값을 props를 통해 하위 컴포넌트에 전달.
+        가상 컴포넌트에 추가) \' + propssec01 + \' -->
+        <section01-component v-on:emitevent='updateFiledata' :propssec01='fileData'></section01-component>
+    </div>
+
+    <script>
+
+        // let today = new Date();
+        // let todayMonth = (today.getMonth() + 1).toString();
+        // let todayDate = today.getDate().toString();
+        // if (todayMonth.length == 1) {
+        //     todayMonth = '0' + todayMonth;
+        // }
+        // if (todayDate.length == 1) {
+        //     todayDate = '0' + todayDate;
+        // }
+        // var fileName = todayMonth + todayDate
+
+        var section01Component = {
+            props: ['propssec01'],
+            template: '\
+                <section id="section01">\
+                    <div class="wrap">\
+                        <div class="gap">\
+                            <div class="container">\
+                                <h4>WE WORK HARD, WE PLAY HARD</h4>\
+                                <h2>\
+                                    SALIENT IS DIGITAL <br>\
+                                    BRILLIANCE\
+                                </h2>\
+                                <h3>CREATIVE SOLUTIONS TO IMPROVE YOUR BUSINESS</h3>\
+                                <p>\
+                                    <span>\
+                                        <a href="javascript:" @click="popup(\'./popup/main\' + propssec01 + \'.html\', \'Window Popup \' + propssec01 + \'\')">OUR SERVICES</a>\
+                                    </span>\
+                                </p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </section>\
+            ',
+            // 하위 컴포넌트라서 상위 methods는 건들 수 없음.
+            // argument - parameter
+            methods: {
+                // 1. 하위 컴포넌트에서 이벤트를 발생시켜서
+                popup: function(fileDir, fileName) {
+
+                    // 2. 상위 컴포넌트에 이벤트를 전달할 이벤트명(emitevent)을 생성한다. ($emit, 에밋 이라는 메소드로 이벤트를 생성)
+                    // * 에밋 이름 소문자로 할 것 !!!!
+                    this.$emit('emitevent');
+
+                    // 5. 전달된 데이터 값을 템플릿 속성으로 받아서 팝업창으로 띄운다.
+                    // 팝업창 (width:500px;height:500px;네비게이션 안나오게 띄움.)
+                    // window.open("팝업파일경로/파일명.html", "팝업창이름", "width:500px;", "height=500px;", top=0, left=300px, location=no);
+                    // window.open("./popup/main100.html", "Window Popup 100", "width:500px;", "height=500px;", top=0, left=300px, location=no);
+                    let url = fileDir;
+                    let name = fileName;
+                    let option = 'width=500px, height=500px, top=100px, left=200px';
+                    window.open(url, name, option);
+
+                    // window.open(fileDir); // 새 창 열기.
+                    // location.href = fileDir; // 현재 창에서 이동.
+                }
+            }
+        };
+
+        var main = new Vue({
+            el: '#main',
+            data: {
+                fileData: 0
+            },
+            components: {
+                'section01-component': section01Component
+            },
+            // 3-1. 상위 컴포넌트의 메서드 속성을 이용, 호출할 메서드를 만든다.
+            methods: {
+                updateFiledata: function() {
+                    // 상위 컴포넌트 데이터 속성 중 fileData 값을 100씩 증가시킨다.
+                    if(this.fileData >= 300) {
+                        this.fileData = 100;
+                    } else {
+                        this.fileData += 100;
+                    }
+                }
+            },
+            // 화면에 부착이 완료된 상태 [반응형]
+            // 창 너비(window.innerWidth)와 창 높이(window.innerHeight)를 반응형에 적용.
+            // 그리고 섹션(section01)의 창높이와 창너비를 설정한다.
+            // 단, 화면크기가 변경 시 즉시 반응 (resize Event Listener)하여 적용되도록 한다.
+            mounted: function() {
+
+                function javascriptFn() {
+
+                    var winH = window.innerHeight; // 창 높이
+                    var section01 = document.querySelector('#section01'); // var section01 = document.getElementById('section01');
+                    
+                    function resizeFn() {
+                        winH = window.innerHeight; // 창 높이
+                        // section01.style = 'height:' + winH + 'px';
+                        section01.style.height = winH + 'px'
+                    }
+
+                    resizeFn(); // 마운트 완료 시, 실행 1회
+                    window.addEventListener('resize', resizeFn); // 창 크기가 변경 시, 즉각 반응하여 함수 호출 실행하는 이벤트 리스너.
+                }
+ 
+                function jQueryFn() {
+
+                    console.log($);
+                    var section01 = $('#section01');
+                    var winH = $(window).innerHeight();
+    
+                    function resizeFn() {
+                        winH = $(window).innerHeight();
+                        section01.css({ height: winH });
+                    }
+    
+                    resizeFn();
+                    $(window).resize(function() {
+                        resizeFn();
+                    });
+                }
+
+                jQueryFn();
+
+            }
+        }); 
+    </script>
+    <!-- 메인 영역 끝 -->
+
+
+</div>
+</body>
+</html>

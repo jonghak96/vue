@@ -1,0 +1,12 @@
+{
+    "member" : [
+        {"name": "이말년", "age": 30, "email": "byunggun@naver.com"},
+        {"name": "주호민", "age": 40, "email": "zoozoo@naver.com"},
+        {"name": "침착맨", "age": 50, "email": "chimchak@naver.com"},
+        {"name": "우왁굳", "age": 60, "email": "wakgood@naver.com"},
+        {"name": "풍월량", "age": 70, "email": "windmill@naver.com"}
+    ],
+    "address" : [
+        
+    ]
+}
