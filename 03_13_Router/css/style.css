@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* DOM : Document Object Model */
+#router-wrap {width:100%;}
+#router-wrap #app {width:100%;}
+#router-wrap #app #header {z-index:2;position:fixed;top:0;left:0;width:100%;height:80px;background:rgba(255, 255, 255, .7);}
+#router-wrap #app #header .logo {position:absolute;top:25px;left:10px;width:100%;text-align:left;color:#000;}
+#router-wrap #app #header .nav {position:absolute;top:33px;left:0;width:100%;text-align:center;}
+#router-wrap #app #header .nav ul {display:inline-block;}
+#router-wrap #app #header .nav ul li {display:inline-block;margin:0 30px;}
+#router-wrap #app #header .nav ul li a {color:#000;font-size:20px;}
+
+#router-wrap #app #content {z-index:1;position:relative;width:100%;height:969px;}
+#router-wrap #app #content .comp {width:100%;height:900px;line-height:960px;font-size:80px;color:#fff;text-align:center;}
+#router-wrap #app #content #home {background:url(../img/berries-1546125_1920.jpg) no-repeat 50% 50%;background:cover;}
+#router-wrap #app #content #main {background:url(../img/main_image.jpg) no-repeat 50% 50%;background:cover;}

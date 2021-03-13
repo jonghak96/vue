@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>| AJAX | AXIOS | FORM DATA 전송 |</title>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./js/lib/axios.min.js"></script>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+</head>
+<body>
+<div id="form-wrap">
+
+    <div id="app">
+        <h1>회원 관리</h1>
+        <form name="memberForm" id="memberForm" method="POST" action="./response.php">
+            <div class="form-box">
+                <ul>
+                    <li>
+                        <div>
+                            <label for="userId">ID</label>
+                            <input type="text" name="userId" id="userId" placeholder="Enter your ID.">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <label for="userPw">PASSWORD</label>
+                            <input type="password" name="userPw" id="userPw" placeholder="at least 8 characters">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <label for="userEmail">Email</label>
+                            <input type="text" name="userEmail" id="userEmail" placeholder="Enter your Email.">
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <!-- <input type="button" value="전송(Submit)"> -->
+                    <input type="submit" value="전송(Submit)">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+
+    <script>
+
+    </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+1. 웹개발 - ECMA5
+2. Vue CLI - ECMA6
+3. PWA (Progressive Web App)
+
+지역 컴포넌트 쓰는 이유 : 중복성을 피하기 위해
+
+nav-component : Snake Case
+navComponent : Camel Case
+NavComponent : Pascal Case
+
+Reactivity : 즉각 반응
+
+ex) https://brando.themezaa.com/corporate/

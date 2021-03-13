@@ -1,0 +1,14 @@
+{
+    "member" : [
+        {"userId": "01", "userPw": "1234", "email": "byunggun@naver.com"},
+        {"userId": "02", "userPw": "2345", "email": "zoozoo@naver.com"},
+        {"userId": "03", "userPw": "3456", "email": "chimchak@naver.com"},
+        {"userId": "04", "userPw": "4567", "email": "wakgood@naver.com"},
+        {"userId": "05", "userPw": "5678", "email": "windmill@naver.com"},
+        {"userId": "06", "userPw": "6789", "email": "herricane@naver.com"},
+        {"userId": "07", "userPw": "7890", "email": "windstorm@naver.com"},
+        {"userId": "08", "userPw": "8900", "email": "waterfall@naver.com"},
+        {"userId": "09", "userPw": "9000", "email": "metheo@naver.com"},
+        {"userId": "10", "userPw": "0000", "email": "risingsun@naver.com"}
+    ]
+}
